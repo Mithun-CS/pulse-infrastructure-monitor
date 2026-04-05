@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
+import SensorChart from '@/components/SensorChart'
 
 export default async function Dashboard() {
 const cookieStore = await cookies()
@@ -179,16 +180,12 @@ STABLE VS LAST HOUR
 
 </div>
 
-{/* SENSOR VISUALIZATION PREVIEW (Where Tomorrow's Graph goes) */}
-<div className="mt-10 p-1 bg-gradient-to-br from-white/10 to-transparent rounded-[2.5rem]">
-<div className="bg-[#080808] rounded-[calc(2.5rem-4px)] p-12 flex flex-col items-center justify-center text-center border border-white/5">
-<div className="w-20 h-20 bg-blue-600/10 rounded-3xl flex items-center justify-center mb-6 border border-blue-500/20 shadow-2xl">
-<svg className="text-blue-500 animate-bounce" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+<div className="mt-10">
+<h2 className="text-xl font-bold mb-6 tracking-tighter text-blue-400">Real-time Performance</h2>
+<div className="p-1 bg-gradient-to-b from-slate-800 to-transparent rounded-[2.5rem]">
+<div className="bg-[#080808] rounded-[calc(2.5rem-4px)] p-6 border border-white/5">
+<SensorChart />
 </div>
-<h2 className="text-2xl font-black text-white tracking-tighter">READY FOR DATA INJECTION</h2>
-<p className="text-slate-500 max-w-sm mt-3 text-sm font-medium">
-The core security protocol is locked. Tomorrow, we connect your real sensor arrays to the <span className="text-blue-400">Live PostgreSQL Engine</span>.
-</p>
 </div>
 </div>
 
